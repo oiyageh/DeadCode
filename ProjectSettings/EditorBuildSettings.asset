@@ -8,5 +8,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Test Folder/Ollie/EnviormentTesting.unity
+    guid: ec733932c0135e94691d9f9e3360656b
+  - enabled: 1
+    path: Assets/Test Folder/Hailey/PrizeGame.unity
+    guid: ce993445b8535468da14670697884489
+  - enabled: 1
+    path: Assets/Test Folder/Hailey/WireGame.unity
+    guid: 3459f0d460531497683c2cd8eaf24269
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

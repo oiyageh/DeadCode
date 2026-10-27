@@ -1,0 +1,19 @@
+﻿title: NPC1
+---
+Kid: Hey, you!
+Kid: What took you so long? 
+Kid: I've got my tickets. I wanna get a prize.
+ -> Okay, okay...
+<<start_prizes>>
+===
+
+title: NPC2
+---
+NPC2: This machine doesn't work.
+NPC2: Don't you have a mechanic for this sort of thing?
+You: No, I'm sorry. It's just me.
+NPC2: Still?
+You: ...
+You: I'll take a look at it. Give me one second. 
+<<start_wires>>
+===
