@@ -503,11 +503,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39210a3b07939c42ba06f99e9cd6541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  walkSpeed: 30
-  runSpeed: 50
+  walkSpeed: 100
+  runSpeed: 120
   gravity: -9
   cameraPivot: {fileID: 1786369586}
-  mouseSensitivity: 30
+  mouseSensitivity: 20
   lookLimit: 85
 --- !u!1 &1226275327 stripped
 GameObject:
