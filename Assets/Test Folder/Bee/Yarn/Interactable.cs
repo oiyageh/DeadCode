@@ -12,6 +12,7 @@ public class PlayDialogue : MonoBehaviour
         {
             FindFirstObjectByType<DialogueRunner>().StartDialogue(node);
         }
+        Debug.Log("this is an interaction");
     }
 }
 

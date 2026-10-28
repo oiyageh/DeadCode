@@ -74,6 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6016612456942086405, guid: 0a300b33930e4450c83f5f4b689d0b60, type: 3}
+    - {fileID: -4832041166863781520, guid: 0a300b33930e4450c83f5f4b689d0b60, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -101,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325690376bafd4db69b7211113152a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayDialogueOnEnter
-  node: NPC2
+  node: NPC1
 --- !u!65 &205511209184175946
 BoxCollider:
   m_ObjectHideFlags: 0
