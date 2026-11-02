@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
-[RequireComponent(typeof(BoxCollider2D))]
+using UnityEngine.Events;
 public class SortingBox : MonoBehaviour, IDropHandler
 {
-    public List<GameObject> capturedObjects = new List<GameObject>();
+
     private BoxCollider2D boxCollider;
     public enum SortingType
     {
@@ -12,11 +12,21 @@ public class SortingBox : MonoBehaviour, IDropHandler
         RightSide
     }
     public SortingType sortingType = SortingType.LeftSide;
-
-    private void Awake()
+    private int numCaptured = 0;
+    [System.Serializable]    
+    
+    public struct OnCaptureEvents
     {
-        boxCollider = GetComponent<BoxCollider2D>();
+        public UnityEvent onCapture;
+        public UnityEvent onFull;
     }
+
+    [Header("Events")]
+    public OnCaptureEvents onCaptureEvents;
+
+    [Tooltip("How many objects need to be captured in this box for it to be considered full.")]
+    public int totalToCapture = 1;
+
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -27,7 +37,12 @@ public class SortingBox : MonoBehaviour, IDropHandler
             {
                 eventData.pointerDrag.transform.GetComponent<Moveable>().isMovable = false;
                 eventData.pointerDrag.transform.position = transform.position;
-                capturedObjects.Add(eventData.pointerDrag);
+                numCaptured++;
+                onCaptureEvents.onCapture?.Invoke();
+                if (numCaptured >= totalToCapture)
+                {
+                    onCaptureEvents.onFull?.Invoke();
+                }
             }
         }
     }
