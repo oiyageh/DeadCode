@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -47,6 +48,12 @@ public class PrizeMiniGame : MonoBehaviour
 
     private bool miniGameStarted = false;
     private bool playerEnded = false;
+
+    [Header("Playtesting")]
+
+    public TextMeshProUGUI text;
+
+
     void Awake()
     {
         miniGameStarted = false;
@@ -69,6 +76,8 @@ public class PrizeMiniGame : MonoBehaviour
                 Debug.Log("ERROR: No aim Transform found.");
             }
         }
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     [ContextMenu("Test Start Minigame")]
@@ -82,6 +91,12 @@ public class PrizeMiniGame : MonoBehaviour
         }
         miniGameStarted = true;
         StartCoroutine(PrizeMiniGameSequence());
+    }
+
+    //temporary; for playtesting purposes.
+    void Start()
+    {
+        StartGame();
     }
 
 
@@ -100,6 +115,7 @@ public class PrizeMiniGame : MonoBehaviour
         requestedPrize = GetRandomPrize();
         Debug.Log(requestedPrize);
         events.OnPrizeRequested?.Invoke(requestedPrize);
+        text.text = requestedPrize.ToString(); //this is for playtesting
         Debug.Log("Prize Requested");
         yield return new WaitForSeconds(delays.timeBeforePlayerTurn);
         camVariables.mainCameraController.TurnToFace(camVariables.aimTransform);
@@ -129,12 +145,14 @@ public class PrizeMiniGame : MonoBehaviour
                 {
 
                     Debug.Log("Won!");
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("EnviormentTesting"); //this is for playtesting
                     playerEnded = true;
                     events.OnPlayerWin?.Invoke();
                 }
                 else
                 {
                     Debug.Log("Lost");
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("EnviormentTesting"); //this is for playtesting
                     playerEnded = true;
                     events.OnPlayerFail?.Invoke();
                 }

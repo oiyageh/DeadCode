@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using Yarn.Unity;
+using System.Security.Cryptography;
 public class WIreManager : MonoBehaviour
 {
     public List<Transform> LeftWires;
@@ -29,6 +30,14 @@ public class WIreManager : MonoBehaviour
         lastButtonIndex = -1;
         buttonsClickable = true;
         InitializeButtons();
+    }
+
+    //temp; for playtesting purposes only.
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        StartMinigame();
     }
     private void InitializeButtons()
     {
@@ -105,6 +114,7 @@ public class WIreManager : MonoBehaviour
         {
             buttonsClickable = false;
             Debug.Log("Game Won!");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("EnviormentTesting");
             OnGameWin?.Invoke();
         }
     }
