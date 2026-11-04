@@ -4,7 +4,9 @@ Kid: Hey, you!
 Kid: What took you so long? 
 Kid: I've got my tickets. I wanna get a prize.
  -> Okay, okay...
-<<start_prizes>>
+ Kid: Thanks!
+<<deactivate_npc NPCManager>>
+
 ===
 
 title: NPC2
@@ -15,5 +17,40 @@ You: No, I'm sorry. It's just me.
 NPC2: Still?
 You: ...
 You: I'll take a look at it. Give me one second. 
-<<start_wires>>
+<<deactivate_npc NPCManager>>
+
+===
+title: Rosaline
+---
+Rosaline: Hey, Casey.
+Rosaline: Tom's got you on the floor alone again, huh?
+    -> Yeah...
+    -> I'll take the hours.
+Rosaline: You want a drink?
+    -> On the clock?
+    -> You know I'm not old enough.
+Rosaline: Like that's ever stopped anyone else.
+Rosaline: Well, anyways. It's slow, right?
+    -> It's always slow.
+    -> And?
+Rosaline: Mind watching the bar for me while I smoke?
+    -> There it is...
+    -> You'd go smoke either way.
+Rosaline: You know me well. Be right back.
+<pretend a minigame happens here>
+Rosaline: Thanks for your help, Casey.
+<<deactivate_npc NPCManager>>
+===
+title: Tom
+---
+Tom: Well, Casey. I'm finished up here for the night. 
+Tom: Watch the floor. Don't bother locking up when you leave. Rosaline's got it.
+Tom: Someone needs something, you help them. No questions asked. Got it?
+Tom: And, y'know, keep an eye out for anything strange.
+Tom: Damn spirits are driving our customers away.
+-> Okay. I understand.
+Tom: Good. I'm trusting you, Casey. Don't make me regret it.
+<<deactivate_npc NPCManager>>
+
+
 ===

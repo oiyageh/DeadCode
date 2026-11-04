@@ -7,6 +7,7 @@ TagManager:
   - AimTransform
   - SortLeftSide
   - SortRightSide
+  - NPC
   layers:
   - Default
   - TransparentFX
