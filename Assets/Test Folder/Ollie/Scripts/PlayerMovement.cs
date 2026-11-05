@@ -151,11 +151,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void DisableCamera()
     {
-        CameraObj.gameObject.SetActive(false); 
+        CameraObj.gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     
     public void EnableCamera()
     {
         CameraObj.gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
