@@ -15,5 +15,10 @@ public class SceneManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("WireGame");
     }
+    [YarnCommand("start_sort")]
+    public static void LoadSort()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("SortingGame");
+    }
 
 }

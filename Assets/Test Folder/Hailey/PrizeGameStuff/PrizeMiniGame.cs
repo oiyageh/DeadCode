@@ -81,7 +81,7 @@ public class PrizeMiniGame : MonoBehaviour
     }
 
     [ContextMenu("Test Start Minigame")]
-    [YarnCommand("StartMinigame")]
+    [YarnCommand("StartPrizeGame")]
     public void StartGame()
     {
         if (miniGameStarted)

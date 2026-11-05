@@ -23,7 +23,7 @@ public class WIreManager : MonoBehaviour
     public UnityEvent OnGameWin;
     private LineRenderer currentLine;
     [ContextMenu("Start Minigame")]
-    [YarnCommand("StartMinigame")]
+    [YarnCommand("StartWireGame")]
     //Call this to start the minigame!
     public void StartMinigame()
     {

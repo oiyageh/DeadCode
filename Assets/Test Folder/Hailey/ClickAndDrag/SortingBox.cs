@@ -12,7 +12,7 @@ public class SortingBox : MonoBehaviour, IDropHandler
         RightSide
     }
     public SortingType sortingType = SortingType.LeftSide;
-    private int numCaptured = 0;
+    public int numCaptured = 0;
     [System.Serializable]    
     
     public struct OnCaptureEvents
