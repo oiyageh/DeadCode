@@ -114,7 +114,8 @@ public class WIreManager : MonoBehaviour
         {
             buttonsClickable = false;
             Debug.Log("Game Won!");
-            UnityEngine.SceneManagement.SceneManager.LoadScene("EnviormentTesting");
+            //for playtesting purposes
+            SceneManager.UnloadScene("WireGame");
             OnGameWin?.Invoke();
         }
     }

@@ -12,7 +12,7 @@ public class SortTracker : MonoBehaviour
         if ((boxOne.numCaptured >= boxOne.totalToCapture) && (boxTwo.numCaptured >= boxTwo.totalToCapture))
         {
             //FOR PLAYTESTING PURPOSES: 
-            UnityEngine.SceneManagement.SceneManager.LoadScene("EnviormentTesting");
+            SceneManager.UnloadScene("SortingGame");
         }
     }
 }

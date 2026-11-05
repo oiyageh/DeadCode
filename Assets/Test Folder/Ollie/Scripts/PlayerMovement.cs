@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,12 +23,18 @@ public class PlayerMovement : MonoBehaviour
     public Slider sensitivitySlider;
     public TMP_Text sensitivityText;
 
+    private Camera CameraObj;
     private bool settingsOpen = false;
 
     private void Start()
     {
         //Get the character conmtroller
         controller = GetComponent<CharacterController>();
+        CameraObj = GetComponentInChildren<Camera>();
+        // make either scenemanager or playermovemnt a singleton    <-- TO DO
+        //THIS IS VERY VERY BAD
+        SceneManager.Camera = this;
+
 
         // lock the cursor and make the cursor invisibe to not dirstupt game play
         Cursor.lockState = CursorLockMode.Locked;
@@ -142,4 +149,13 @@ public class PlayerMovement : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void DisableCamera()
+    {
+        CameraObj.gameObject.SetActive(false); 
+    }
+    
+    public void EnableCamera()
+    {
+        CameraObj.gameObject.SetActive(true);
+    }
 }

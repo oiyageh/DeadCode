@@ -81,7 +81,7 @@ public class PrizeMiniGame : MonoBehaviour
     }
 
     [ContextMenu("Test Start Minigame")]
-    [YarnCommand("StartPrizeGame")]
+    [YarnCommand("StartMinigame")]
     public void StartGame()
     {
         if (miniGameStarted)
@@ -141,19 +141,17 @@ public class PrizeMiniGame : MonoBehaviour
             RaycastHit hitInfo;
             if(Physics.Raycast(mouseDirection,out hitInfo, 20f, prizeLayer))
             {
-                if(hitInfo.transform.GetComponent<PrizeContainer>().thisPrize.name == requestedPrize.name)
+                SceneManager.UnloadScene("PrizeGame"); // for playtesting.
+                playerEnded = true;
+                if (hitInfo.transform.GetComponent<PrizeContainer>().thisPrize.name == requestedPrize.name)
                 {
 
                     Debug.Log("Won!");
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("EnviormentTesting"); //this is for playtesting
-                    playerEnded = true;
                     events.OnPlayerWin?.Invoke();
                 }
                 else
                 {
                     Debug.Log("Lost");
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("EnviormentTesting"); //this is for playtesting
-                    playerEnded = true;
                     events.OnPlayerFail?.Invoke();
                 }
             }
