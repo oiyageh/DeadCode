@@ -4,6 +4,7 @@ Kid: Hey, you!
 Kid: What took you so long? 
 Kid: I've got my tickets. I wanna get a prize.
  -> Okay, okay...
+ <<start_prizes>>
  Kid: Thanks!
 <<deactivate_npc NPCManager>>
 

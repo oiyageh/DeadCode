@@ -23,7 +23,7 @@ public class WIreManager : MonoBehaviour
     public UnityEvent OnGameWin;
     private LineRenderer currentLine;
     [ContextMenu("Start Minigame")]
-    [YarnCommand("StartMinigame")]
+    [YarnCommand("StartWireGame")]
     //Call this to start the minigame!
     public void StartMinigame()
     {
@@ -114,7 +114,8 @@ public class WIreManager : MonoBehaviour
         {
             buttonsClickable = false;
             Debug.Log("Game Won!");
-            UnityEngine.SceneManagement.SceneManager.LoadScene("EnviormentTesting");
+            //for playtesting purposes
+            SceneManager.UnloadScene("WireGame");
             OnGameWin?.Invoke();
         }
     }
