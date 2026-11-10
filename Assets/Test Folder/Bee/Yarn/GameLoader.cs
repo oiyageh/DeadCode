@@ -37,6 +37,4 @@ public class SceneManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(name);
         Camera.EnableCamera();
     }
-
-
 }
