@@ -44,13 +44,23 @@ Rosaline: Thanks for your help, Casey.
 ===
 title: Tom
 ---
-Tom: Well, Casey. I'm finished up here for the night. 
-Tom: Watch the floor. Don't bother locking up when you leave. Rosaline's got it.
-Tom: Someone needs something, you help them. No questions asked. Got it?
-Tom: And, y'know, keep an eye out for anything strange.
-Tom: Damn spirits are driving our customers away.
--> Okay. I understand.
-Tom: Good. I'm trusting you, Casey. Don't make me regret it.
+Tom: Alright, Casey. I'm finished up here for today.
+You: Your meeting is today?
+Tom: Sure is. The whole thing is just stupid.
+Tom: We can't afford their minimum. Even if we could, where the hell are we supposed to store all of that alcohol?
+    -> Maybe we don't need to serve alcohol.
+      Tom: Sure we do. Where else is anyone supposed to have a drink around here these days?
+      Tom: It's damn near the only reason people still show up here. 
+    -> Yeah...
+Tom: I've tried looking for other suppliers, but...
+Tom: Oh, whatever. Watch the floor, kid. 
+Tom: A customer needs something, you give it to 'em. Can't lose any more business.
+Tom: Rosaline will lock up after you go.
+Tom: Best behavior. Seriously.
+    -> Loud and clear.
+    -> I get it.
+Tom: See you tomorrow.
+
 <<deactivate_npc NPCManager>>
 
 
