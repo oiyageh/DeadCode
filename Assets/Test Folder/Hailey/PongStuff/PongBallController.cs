@@ -7,6 +7,8 @@ public class PongBallController : MonoBehaviour
     public Rigidbody2D myBody;
 
     public PongGameManager manager;
+
+    private Vector2 resetVelocity = new Vector2(400, 400);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,7 +18,11 @@ public class PongBallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (myBody.linearVelocity.x >= 400 || myBody.linearVelocity.y >= 400)
+        {
+            myBody.linearVelocity = resetVelocity;
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, -45);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
