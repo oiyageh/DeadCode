@@ -2,6 +2,7 @@ using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class PlayerMovement : MonoBehaviour
 
     private Camera CameraObj;
     private bool settingsOpen = false;
+
+    [Header("YarnStuff")]
+    public DialogueRunner dialogueRunner;
+    private bool dialogueActive = false;
 
     private void Start()
     {
@@ -51,10 +56,16 @@ public class PlayerMovement : MonoBehaviour
         // Hide settings menu at startup
         settingsPanel.SetActive(false);
         UpdateSensitivityText(mouseSensitivity);
+
+        //Listening for when the dialouge starts and stops 
+        dialogueRunner.onDialogueStart.AddListener(DialogueStarted);
+        dialogueRunner.onDialogueComplete.AddListener(DialogueEnded);
     }
 
     private void Update()
     {
+        if (dialogueActive)
+            return;
 
         // Open or close settings with Escape
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -161,5 +172,47 @@ public class PlayerMovement : MonoBehaviour
         CameraObj.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    void DialogueStarted()
+    {
+        // Dialogue is active
+        dialogueActive = true;
+
+        // Unlock mouse
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        // Freeze player
+        if (controller != null)
+        {
+            controller.enabled = false;
+        }
+    }
+
+
+    void DialogueEnded()
+    {
+        // Dialogue is over
+        dialogueActive = false;
+
+        // Lock mouse again
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        // Allow player movement again
+        if (controller != null)
+        {
+            controller.enabled = true;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (dialogueRunner != null)
+        {
+            dialogueRunner.onDialogueStart.RemoveListener(DialogueStarted);
+            dialogueRunner.onDialogueComplete.RemoveListener(DialogueEnded);
+        }
     }
 }
