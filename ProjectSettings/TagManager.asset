@@ -8,6 +8,8 @@ TagManager:
   - SortLeftSide
   - SortRightSide
   - NPC
+  - Brick
+  - Wall
   layers:
   - Default
   - TransparentFX
