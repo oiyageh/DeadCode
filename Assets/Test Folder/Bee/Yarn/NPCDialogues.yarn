@@ -24,14 +24,20 @@ title: Rosaline
 ---
 Rosaline: Hey, Casey.
 Rosaline: You doing okay by yourself out there?
+You: I mean...
     -> Same as always.
-    -> Eh...
+    -> That girl...
+        Rosaline: What, Penny? Giving you a hard time?
+        Rosaline: You gotta cut her some slack.
+        Rosaline: You were just as wide-eyed when you were a kid. 
+        Rosaline: But I get it. You're bothered.
 Rosaline: Sounds tough. Want a drink?
     -> On the clock?
     -> You know I'm not old enough.
 Rosaline: Like that's ever stopped anyone.
 Rosaline: I'm just kidding. Tom would have our heads.
 Rosaline: And then we really wouldn't be able to sell alcohol anymore.
+...
 Rosaline: Well, hey, it's slowed down.
 Rosaline: Wanna do me a favor?
     -> Of course.
@@ -40,7 +46,10 @@ Rosaline: That's the spirit.
 Rosaline: I wanna smoke. Mind watching the bar for a few?
     -> Alright.
     -> I don't know how to make drinks.
-        (here lies a minigame guide in the form of dialogue, but we have not come up with the game yet...)
+       Rosaline: We all start somewhere.
+       Rosaline: Anyways, it's not so tough.
+       Rosaline: The ingredients for each drink are listed on the menu, so...
+       Rosaline: If anyone orders anything, just look at that.
 Rosaline: Thanks, kid. Be right back.
 <<deactivate_npc NPCManager>>
 ===
@@ -70,7 +79,7 @@ Tom: See you tomorrow.
 title: Buyer
 ---
 ???: You work here?
-???: Ah, clearly you don't hold much power here.
+???: You don't look like you're in charge.
 ???: Is there a manager I could talk to?
     -> No.
         ???: Here's my number. Tell them to give me a call.
@@ -78,8 +87,7 @@ title: Buyer
         ???: Already closing some deals on a few others nearby.
     -> Why?
         ???: Looking to buy this building.
-        ???: Already working on some of the others.
-        ???: It's got great bones. And, well, it doesn't exactly look like business is booming.
+        ???: It's got good bones. And, well, it doesn't exactly look like business is booming.
         ???: We've got great business ideas. It'll do this town some good. Bring the tourists back.
             -> What would you know about what's good for this town?
             ???: No offense, but more than you.
@@ -87,4 +95,54 @@ title: Buyer
             ???: I'll be back either way.            
 
 
+===
+title: Russell
+---
+Russell: Hey there.
+Russell: Rosaline not here today?
+-> She'll be right back.
+-> She's smoking.
+You: I'm, uh... filling in, in the meantime.
+You: Should only be a few minutes.
+Russell: Are you even old enough to serve drinks?
+You: Sure, unless you're a cop...
+Russell: Ha, no chance.
+Russell: I'll go easy on you, then.
+Russell: I'll have a vodka soda.
+(here lies a drink mixing game)
+You: Here you go. I did my best.
+Russell: Hard to mess it up.
+Russell: Thanks. 
+You: You're Penny's dad?
+// before this point, penny will have brought up her father in passing
+Russell: Yeah.
+Russell: I hope she isn't giving you too much trouble.
+-> Not at all.
+    Russell: Haha. You don't have to lie about it.
+-> A little...
+Russell: She's just a bit lonely.
+Russell: Feels bad, you know? That I can't give her the attention she needs.
+Russell: Ever since...
+Russell: Ah, I'm sure you get it. We're all struggling.
+Russell: My wife was the more attentive one. 
+Russell: It's been hard to find work. With most places still being closed down and all.
+Russell: Work that pays the bills, anyways...
+Russell: I'm talking too much about myself.
+Russell: I guess what I mean is thank you. For being patient with Penny.
+===
+title: Faceless_Ghost
+---
+===
+title: June
+---
+???: Boo!
+You: ...That's not funny.
+???: I know. But you look like you could use something to smile about.
+//wip
+===
+title: Alcoholic
+---
+===
+title: Chef
+---
 ===
