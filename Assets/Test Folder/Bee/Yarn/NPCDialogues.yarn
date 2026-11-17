@@ -15,8 +15,7 @@ title: NPC2
 NPC2: This machine doesn't work.
 NPC2: Don't you have a mechanic for this sort of thing?
 You: No, I'm sorry. It's just me.
-NPC2: Still?
-You: ...
+NPC2: Still? 
 You: I'll take a look at it. Give me one second. 
 <<deactivate_npc NPCManager>>
 
@@ -24,22 +23,25 @@ You: I'll take a look at it. Give me one second.
 title: Rosaline
 ---
 Rosaline: Hey, Casey.
-Rosaline: Tom's got you on the floor alone again, huh?
-    -> Yeah...
-    -> I'll take the hours.
-Rosaline: You want a drink?
+Rosaline: You doing okay by yourself out there?
+    -> Same as always.
+    -> Eh...
+Rosaline: Sounds tough. Want a drink?
     -> On the clock?
     -> You know I'm not old enough.
-Rosaline: Like that's ever stopped anyone else.
-Rosaline: Well, anyways. It's slow, right?
-    -> It's always slow.
-    -> And?
-Rosaline: Mind watching the bar for me while I smoke?
-    -> There it is...
-    -> You'd go smoke either way.
-Rosaline: You know me well. Be right back.
-<pretend a minigame happens here>
-Rosaline: Thanks for your help, Casey.
+Rosaline: Like that's ever stopped anyone.
+Rosaline: I'm just kidding. Tom would have our heads.
+Rosaline: And then we really wouldn't be able to sell alcohol anymore.
+Rosaline: Well, hey, it's slowed down.
+Rosaline: Wanna do me a favor?
+    -> Of course.
+    -> I don't have a choice, do I?
+Rosaline: That's the spirit. 
+Rosaline: I wanna smoke. Mind watching the bar for a few?
+    -> Alright.
+    -> I don't know how to make drinks.
+        (here lies a minigame guide in the form of dialogue, but we have not come up with the game yet...)
+Rosaline: Thanks, kid. Be right back.
 <<deactivate_npc NPCManager>>
 ===
 title: Tom
@@ -62,6 +64,27 @@ Tom: Best behavior. Seriously.
 Tom: See you tomorrow.
 
 <<deactivate_npc NPCManager>>
+
+
+===
+title: Buyer
+---
+???: You work here?
+???: Ah, clearly you don't hold much power here.
+???: Is there a manager I could talk to?
+    -> No.
+        ???: Here's my number. Tell them to give me a call.
+        ???: I'm looking to purchase this building.
+        ???: Already closing some deals on a few others nearby.
+    -> Why?
+        ???: Looking to buy this building.
+        ???: Already working on some of the others.
+        ???: It's got great bones. And, well, it doesn't exactly look like business is booming.
+        ???: We've got great business ideas. It'll do this town some good. Bring the tourists back.
+            -> What would you know about what's good for this town?
+            ???: No offense, but more than you.
+            ???: Anyways. Tell your boss to give me a call.
+            ???: I'll be back either way.            
 
 
 ===
