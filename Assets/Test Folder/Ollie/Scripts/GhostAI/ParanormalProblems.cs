@@ -24,31 +24,36 @@ public class ParanormalProblem : MonoBehaviour
         if (!problemActive || indicatorInstance == null)
             return;
 
-        // Follow the problem object.
+        // Keep the Canvas above the problem object.
         indicatorInstance.transform.position =
             transform.position + indicatorOffset;
 
-        // Face the player.
+        // Make the Canvas face the player's camera.
         if (playerCamera != null)
         {
-            Vector3 direction =
-                playerCamera.transform.position -
-                indicatorInstance.transform.position;
-
             indicatorInstance.transform.rotation =
-                Quaternion.LookRotation(direction);
+                Quaternion.LookRotation(
+                    playerCamera.transform.position -
+                    indicatorInstance.transform.position
+                );
         }
     }
 
     public void StartProblem()
     {
-        if (problemActive) return;
+        // Prevent creating duplicate indicators.
+        if (problemActive)
+            return;
 
         problemActive = true;
 
-        BullshitMeter.Instance.AddProblem(this);
+        // Add this problem to the Bullshit Meter.
+        if (BullshitMeter.Instance != null)
+        {
+            BullshitMeter.Instance.AddProblem(this);
+        }
 
-        // Create an indicator instance.
+        // Create a separate Canvas indicator for this object.
         if (indicatorPrefab != null)
         {
             indicatorInstance = Instantiate(
@@ -63,13 +68,18 @@ public class ParanormalProblem : MonoBehaviour
 
     public void EndProblem()
     {
-        if (!problemActive) return;
+        if (!problemActive)
+            return;
 
         problemActive = false;
 
-        BullshitMeter.Instance.SolveProblem(this);
+        // Remove this problem from the Bullshit Meter.
+        if (BullshitMeter.Instance != null)
+        {
+            BullshitMeter.Instance.SolveProblem(this);
+        }
 
-        // Remove this problem's indicator.
+        // Destroy only this object's indicator.
         if (indicatorInstance != null)
         {
             Destroy(indicatorInstance);
