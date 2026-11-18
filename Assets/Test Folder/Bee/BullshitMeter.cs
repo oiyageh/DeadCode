@@ -1,20 +1,60 @@
+
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class BullshitMeter : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static BullshitMeter Instance;
+
+    [Header("Meter Settings")]
+    public Slider slider;
+
+    public float maxProblems = 100;
+    public float currentProblems = 0;
+    public float meterSpeed = 0.5f;
+
+    private HashSet<ParanormalProblem> activeProblems =
+        new HashSet<ParanormalProblem>();
+
+    void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        slider.maxValue = maxProblems;
+        slider.value = currentProblems;
+    }
+
     void Update()
     {
-        float count = GameObject.FindGameObjectsWithTag("NPC").Length / 10f;
+        float target = 0;
 
-        Slider slider = GetComponent<Slider>();
-        slider.value = Mathf.MoveTowards(slider.value, count, Time.deltaTime * 0.5f);
+        foreach (ParanormalProblem problem in activeProblems)
+        {
+            target += problem.problemValue;
+        }
+
+        target = Mathf.Clamp(target, 0, maxProblems);
+
+        currentProblems = Mathf.MoveTowards(
+            currentProblems,
+            target,
+            Time.deltaTime * meterSpeed
+        );
+
+        slider.value = currentProblems;
+    }
+
+    public void AddProblem(ParanormalProblem problem)
+    {
+        activeProblems.Add(problem);
+    }
+
+    public void SolveProblem(ParanormalProblem problem)
+    {
+        activeProblems.Remove(problem);
     }
 }
