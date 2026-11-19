@@ -11761,11 +11761,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7139929493400350976, guid: 39423807e44383942b6a4672592cc1c6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7615888259903249408, guid: 39423807e44383942b6a4672592cc1c6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8928317085039868309, guid: 39423807e44383942b6a4672592cc1c6, type: 3}
       propertyPath: m_Name
@@ -11773,7 +11773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8928317085039868309, guid: 39423807e44383942b6a4672592cc1c6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9146621746681542227, guid: 39423807e44383942b6a4672592cc1c6, type: 3}
       propertyPath: m_Pivot.x
@@ -11871,6 +11871,10 @@ PrefabInstance:
     - target: {fileID: 2566350788541166431, guid: 1b1b5aa6c6c0e4040b17479af976a291, type: 3}
       propertyPath: m_Name
       value: LightRepairPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2566350788541166431, guid: 1b1b5aa6c6c0e4040b17479af976a291, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3769064406892283972, guid: 1b1b5aa6c6c0e4040b17479af976a291, type: 3}
       propertyPath: flicker
