@@ -1,25 +1,47 @@
 using UnityEngine;
 using Yarn.Unity;
 
-public class PlayDialogue : MonoBehaviour
+public class Interactable : MonoBehaviour
 {
+    public string idleNode;
+    public string taskNode;
+    public string completedNode;
 
-    public string node;
+    public bool ActiveTask = false;
+    public bool TaskComplete = false;
+    public bool idlePlayed = false;
+
     private NPCManager npcManager;
 
     void Start()
-{
-    npcManager = FindFirstObjectByType<NPCManager>();
-}
+    {
+        npcManager = FindFirstObjectByType<NPCManager>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             npcManager.SetNPC(gameObject);
-            FindFirstObjectByType<DialogueRunner>().StartDialogue(node);
+
+            if (idlePlayed && !ActiveTask && !TaskComplete)
+                return;
+
+            string node = idleNode;
+
+            if (ActiveTask)
+                node = taskNode;
+
+            if (TaskComplete)
+                node = completedNode;
+
+            if (!string.IsNullOrEmpty(node))
+            {
+                if (!ActiveTask && !TaskComplete)
+                    idlePlayed = true;
+
+                FindFirstObjectByType<DialogueRunner>().StartDialogue(node);
+            }
         }
-        Debug.Log("this is an interaction");
     }
 }
-
