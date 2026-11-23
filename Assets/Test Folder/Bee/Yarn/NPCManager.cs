@@ -1,5 +1,6 @@
 using UnityEngine;
 using Yarn.Unity;
+using TMPro;
 
 public class NPCManager : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class NPCManager : MonoBehaviour
     public Interactable Alcoholic;
     public Interactable Russell;
     public int activeTasks = 0;
+
     private DialogueRunner dialogueRunner;
+
+    public TMP_Text taskNotif;
 
     public void SetNPC(GameObject npc)
     {
@@ -24,11 +28,22 @@ public class NPCManager : MonoBehaviour
 
     [YarnCommand("completed_task")]
     public void CompleteTask()
-{
+    {
     currentNPC.GetComponent<Interactable>().TaskComplete = true;
     currentNPC.GetComponent<Interactable>().ActiveTask = false;
     Debug.Log("Current NPC's task has been completed.");
     activeTasks--;
+    }
+
+    [YarnCommand("reset_text")]
+    public void TextReset()
+    {
+    taskNotif.text = "";
+    }
+
+void ShowTask(string message)
+{
+    taskNotif.text = message;
 }
 
     void Start()
@@ -38,7 +53,7 @@ public class NPCManager : MonoBehaviour
         dialogueRunner = FindFirstObjectByType<DialogueRunner>();
 
         Penny.ActiveTask = true;
-        Invoke("RosalineTask", 60f);
+        Invoke("RosalineTask", 30f);
     }
 
     void RosalineTask()
@@ -52,6 +67,7 @@ public class NPCManager : MonoBehaviour
             {
         Rosaline.ActiveTask = true;
                 activeTasks++;
+        ShowTask("It seems like Rosaline wants something.");
         Invoke ("AlcoholicTask", 30f);
             }
     }
@@ -65,6 +81,7 @@ public class NPCManager : MonoBehaviour
         Alcoholic.gameObject.SetActive(true);
         Alcoholic.ActiveTask = true;
                 activeTasks++;
+        ShowTask("Something is happening at the bar.");
 
         Invoke ("RussellTask", 60f);
     }
@@ -77,6 +94,7 @@ public class NPCManager : MonoBehaviour
             Invoke("RussellTask", 1f);
         }
           activeTasks++;
+            ShowTask("Someone is at the bar.");
 
         Russell.gameObject.SetActive(true);
         Russell.ActiveTask = true;
