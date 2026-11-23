@@ -266,6 +266,7 @@ MonoBehaviour:
   problem: {fileID: 25588361}
   hauntPoint: {fileID: 1899757078}
   hauntedLight: {fileID: 25588359}
+  arcadeRepair: {fileID: 0}
 --- !u!114 &25588361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,8 +280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParanormalProblem
   problemValue: 10
-  indicatorPrefab: {fileID: 5175248495300265674, guid: 4d54d53af23504249aa55daac6536470, type: 3}
-  indicatorOffset: {x: 0, y: 2.5, z: 0}
+  indicator: {fileID: 0}
+  heightAboveObject: 1
 --- !u!1 &61918645
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +332,7 @@ MonoBehaviour:
   problem: {fileID: 61918648}
   hauntPoint: {fileID: 61918646}
   hauntedLight: {fileID: 0}
+  arcadeRepair: {fileID: 0}
 --- !u!114 &61918648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,8 +346,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParanormalProblem
   problemValue: 20
-  indicatorPrefab: {fileID: 5175248495300265674, guid: 4d54d53af23504249aa55daac6536470, type: 3}
-  indicatorOffset: {x: 0, y: 10, z: 0}
+  indicator: {fileID: 0}
+  heightAboveObject: 1
 --- !u!65 &61918649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4666,6 +4668,10 @@ PrefabInstance:
     - target: {fileID: 2958262985454349539, guid: 52571f68872914e24837210513edea1d, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958262985454349548, guid: 52571f68872914e24837210513edea1d, type: 3}
+      propertyPath: typewriterStyle
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2958262986520364887, guid: 52571f68872914e24837210513edea1d, type: 3}
       propertyPath: m_AnchorMax.y
