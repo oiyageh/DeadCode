@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6083096444923104577}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.364158, y: 8.381643, z: -24.457174}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -66,6 +66,7 @@ MonoBehaviour:
   problem: {fileID: 1509380887539174769}
   hauntPoint: {fileID: 4724151691751550453}
   hauntedLight: {fileID: 0}
+  arcadeRepair: {fileID: 8845342920970653801}
 --- !u!114 &8845342920970653801
 MonoBehaviour:
   m_ObjectHideFlags: 0
