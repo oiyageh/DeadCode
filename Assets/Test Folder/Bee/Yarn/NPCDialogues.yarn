@@ -74,26 +74,9 @@ Tom: See you tomorrow.
 
 <<deactivate_npc NPCManager>>
 
-
 ===
 title: Buyer
 ---
-???: You work here?
-???: You don't look like you're in charge.
-???: Is there a manager I could talk to?
-    -> No.
-        ???: Here's my number. Tell them to give me a call.
-        ???: I'm looking to purchase this building.
-        ???: Already closing some deals on a few others nearby.
-    -> Why?
-        ???: Looking to buy this building.
-        ???: It's got good bones. And, well, it doesn't exactly look like business is booming.
-        ???: We've got great business ideas. It'll do this town some good. Bring the tourists back.
-            -> What would you know about what's good for this town?
-            ???: No offense, but more than you.
-            ???: Anyways. Tell your boss to give me a call.
-            ???: I'll be back either way.            
-
 
 ===
 title: Russell
@@ -129,15 +112,14 @@ Russell: It's been hard to find work. With most places still being closed down a
 Russell: Work that pays the bills, anyways...
 Russell: I'm talking too much about myself.
 Russell: I guess what I mean is thank you. For being patient with Penny.
+-> It's no problem.
+-> I'm sorry for what you're dealing with.
 ===
 title: Faceless_Ghost
 ---
 ===
 title: June
 ---
-???: Boo!
-You: ...That's not funny.
-???: I know. But you look like you could use something to smile about.
 //wip
 ===
 title: Alcoholic
@@ -153,7 +135,14 @@ You: (Even if I make her a drink, she wouldn't be able to drink it.)
 You: (I have to find another way to get her to leave.)
 You: (She's so drunk, maybe I can get away with lying to her.)
 [dialogue minigame]
+Oh, damn. I'm really that drunk?
+...Okay. I'll go.
+But I'll be back. 
 ===
 title: Chef
 ---
+===
+title: Penny
+---
+
 ===
