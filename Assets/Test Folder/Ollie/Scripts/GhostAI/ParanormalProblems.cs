@@ -7,84 +7,79 @@ public class ParanormalProblem : MonoBehaviour
     public float problemValue = 20;
 
     [Header("Indicator Settings")]
-    public GameObject indicatorPrefab;
-    public Vector3 indicatorOffset = new Vector3(0, 2.5f, 0);
+    public GameObject indicator;
+    public float heightAboveObject = 1f;
 
-    private bool problemActive = false;
-    private GameObject indicatorInstance;
+    private bool problemActive;
     private Camera playerCamera;
 
     void Start()
     {
         playerCamera = Camera.main;
+
+        // Hide the indicator when the game starts.
+        if (indicator != null)
+            indicator.SetActive(false);
     }
 
     void LateUpdate()
     {
-        if (!problemActive || indicatorInstance == null)
+        if (!problemActive || indicator == null)
             return;
 
-        // Keep the Canvas above the problem object.
-        indicatorInstance.transform.position =
-            transform.position + indicatorOffset;
+        // Position indicator above the object.
+        Collider objectCollider = GetComponent<Collider>();
 
-        // Make the Canvas face the player's camera.
+        if (objectCollider != null)
+        {
+            indicator.transform.position = new Vector3(
+                objectCollider.bounds.center.x,
+                objectCollider.bounds.max.y + heightAboveObject,
+                objectCollider.bounds.center.z
+            );
+        }
+        else
+        {
+            indicator.transform.position =
+                transform.position + Vector3.up * heightAboveObject;
+        }
+
+        // Make indicator face the player.
         if (playerCamera != null)
         {
-            indicatorInstance.transform.rotation =
-                Quaternion.LookRotation(
-                    playerCamera.transform.position -
-                    indicatorInstance.transform.position
-                );
+            Vector3 direction =
+                playerCamera.transform.position -
+                indicator.transform.position;
+
+            indicator.transform.rotation =
+                Quaternion.LookRotation(direction);
         }
     }
 
     public void StartProblem()
     {
-        // Prevent creating duplicate indicators.
-        if (problemActive)
-            return;
+        if (problemActive) return;
 
         problemActive = true;
 
-        // Add this problem to the Bullshit Meter.
-        if (BullshitMeter.Instance != null)
-        {
-            BullshitMeter.Instance.AddProblem(this);
-        }
+        BullshitMeter.Instance.AddProblem(this);
 
-        // Create a separate Canvas indicator for this object.
-        if (indicatorPrefab != null)
-        {
-            indicatorInstance = Instantiate(
-                indicatorPrefab,
-                transform.position + indicatorOffset,
-                Quaternion.identity
-            );
-        }
+        if (indicator != null)
+            indicator.SetActive(true);
 
         Debug.Log(gameObject.name + " problem started!");
     }
 
     public void EndProblem()
     {
-        if (!problemActive)
-            return;
+        if (!problemActive) return;
 
         problemActive = false;
 
-        // Remove this problem from the Bullshit Meter.
-        if (BullshitMeter.Instance != null)
-        {
-            BullshitMeter.Instance.SolveProblem(this);
-        }
+        BullshitMeter.Instance.SolveProblem(this);
 
-        // Destroy only this object's indicator.
-        if (indicatorInstance != null)
-        {
-            Destroy(indicatorInstance);
-            indicatorInstance = null;
-        }
+        if (indicator != null)
+            indicator.SetActive(false);
 
         Debug.Log(gameObject.name + " problem solved!");
     }

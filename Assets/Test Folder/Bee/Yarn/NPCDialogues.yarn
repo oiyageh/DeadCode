@@ -20,9 +20,19 @@ You: I'll take a look at it. Give me one second.
 <<deactivate_npc NPCManager>>
 
 ===
-title: Rosaline
+title: Rosaline_Idle
 ---
 Rosaline: Hey, Casey.
+Rosaline: Tom leave already?
+You: Yeah. 
+Rosaline: We better stay busy. 
+You: Are you okay by yourself here?
+Rosaline: I'm fine. I'll let you know if I need anything.
+===
+title: Rosaline_Task
+---
+<<reset_text NPCManager>>
+Rosaline: Hey.
 Rosaline: You doing okay by yourself out there?
 You: I mean...
     -> Same as always.
@@ -51,6 +61,7 @@ Rosaline: I wanna smoke. Mind watching the bar for a few?
        Rosaline: The ingredients for each drink are listed on the menu, so...
        Rosaline: If anyone orders anything, just look at that.
 Rosaline: Thanks, kid. Be right back.
+<<completed_task NPCManager>>
 <<deactivate_npc NPCManager>>
 ===
 title: Tom
@@ -66,6 +77,8 @@ Tom: We can't afford their minimum. Even if we could, where the hell are we supp
 Tom: I've tried looking for other suppliers, but...
 Tom: Oh, whatever. Watch the floor, kid. 
 Tom: A customer needs something, you give it to 'em. Can't lose any more business.
+Tom: Keep an eye out for anything weird. You know, the usual. Lights flickering, machines jamming... I'm getting real tired of it.
+Tom: If you see anything, fix it quickly. 
 Tom: Rosaline will lock up after you go.
 Tom: Best behavior. Seriously.
     -> Loud and clear.
@@ -81,6 +94,8 @@ title: Buyer
 ===
 title: Russell
 ---
+<<reset_text NPCManager>>
+
 Russell: Hey there.
 Russell: Rosaline not here today?
 -> She'll be right back.
@@ -88,7 +103,7 @@ Russell: Rosaline not here today?
 You: I'm, uh... filling in, in the meantime.
 You: Should only be a few minutes.
 Russell: Are you even old enough to serve drinks?
-You: Sure, unless you're a cop...
+You: Sure. Unless you're a cop.
 Russell: Ha, no chance.
 Russell: I'll go easy on you, then.
 Russell: I'll have a vodka soda.
@@ -96,10 +111,11 @@ Russell: I'll have a vodka soda.
 You: Here you go. I did my best.
 Russell: Hard to mess it up.
 Russell: Thanks. 
-You: You're Penny's dad?
+You: You're Penny's dad? I don't think I've seen you around.
+
 // before this point, penny will have brought up her father in passing
-Russell: Yeah.
-Russell: I hope she isn't giving you too much trouble.
+Russell: You would've if you were at the bar more often.
+Russell: I hope Penny isn't giving you much trouble.
 -> Not at all.
     Russell: Haha. You don't have to lie about it.
 -> A little...
@@ -107,13 +123,28 @@ Russell: She's just a bit lonely.
 Russell: Feels bad, you know? That I can't give her the attention she needs.
 Russell: Ever since...
 Russell: Ah, I'm sure you get it. We're all struggling.
-Russell: My wife was the more attentive one. 
+Russell: My wife was the more attentive one, you know? More cut out to be a parent than I am.
 Russell: It's been hard to find work. With most places still being closed down and all.
 Russell: Work that pays the bills, anyways...
+Russell: Rosaline's nice enough to slip us some food to take home.
 Russell: I'm talking too much about myself.
-Russell: I guess what I mean is thank you. For being patient with Penny.
--> It's no problem.
--> I'm sorry for what you're dealing with.
+Russell: You seem to have enough on your plate. Rosaline says you might not be able to sell drinks anymore.
+You: Yeah. I guess we're the only business for miles ordering alcohol.
+You: Since the real bar was never rebuilt.
+You: Our supplier says they're losing money by delivering out here.
+You: They want us to make bigger orders or they're gonna stop delivering to us. But we can't afford that.
+You: We're all a little stressed. People really only come here to drink.
+You: Tom is trying to work something out right now, but... he didn't seem optimistic.
+Russell: I'm sorry to hear about that. 
+Russell: I hope it all works out.
+You: Me too.
+Russell: Well, what I meant to tell you--
+Russell: Thanks for being patient with my kid, Casey.
+(hi the game ends here for now)
+<<deactivate_npc NPCManager>>
+
+
+
 ===
 title: Faceless_Ghost
 ---
@@ -124,6 +155,7 @@ title: June
 ===
 title: Alcoholic
 ---
+<<reset_text NPCManager>>
 Hey, you! Bartender!
 Get me another drink, would you?
 I've been standing here forever!
@@ -138,11 +170,49 @@ You: (She's so drunk, maybe I can get away with lying to her.)
 Oh, damn. I'm really that drunk?
 ...Okay. I'll go.
 But I'll be back. 
+<<completed_task NPCManager>>
+<<deactivate_npc NPCManager>>
 ===
-title: Chef
+title: Penny_1
 ---
-===
-title: Penny
----
+Penny: Hi, Casey!
+You: ...
+You: Hi, Penny.
+You: Back so soon...?
+Penny: Yep! My dad says I don't have any chores at home, so I can stay as long as I want.
+You: That's... great.
+You: (She's always here. I really hope she doesn't bother me too much today.)
+You: Do you need something...?
+Penny: This game won't turn on! Again! Why does this always happen?
+Penny: Can you fix it?
+You: I'll take a look at it. Just a second.
+Penny: Thank you!
+(wires minigame here?)
+Penny: Woah, you fixed it!
+Penny: Do you wanna play it with me?
+You: Sorry, Penny. I'm working.
+You: Maybe another time.
+Penny: Aw... okay.
+Penny: Well, thanks anyway!
+<<completed_task NPCManager>>
+<<deactivate_npc NPCManager>>
 
+===
+title: Penny_2
+---
+Penny: Hey! Can I get a prize?
+You: Already? Don't you want to... um, save up more tickets?
+Penny: No, no! What if someone takes the prize I want before I can get it?
+You: (...There's almost no one else here.)
+You: Okay, fine. Which one do you want?
+Penny: I'll show you!
+(prize minigame here)
+You: There you go. 
+Penny: Thanks!
+You: Do you need anything else? ...Before I walk away?
+Penny: Nope. All good!
+You: ...You sure?
+Penny: Mhm!
+You: Okay.
+<<deactivate_npc NPCManager>>
 ===

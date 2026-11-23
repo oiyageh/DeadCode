@@ -16,6 +16,7 @@ public class BullshitMeter : MonoBehaviour
 
     private HashSet<ParanormalProblem> activeProblems =
         new HashSet<ParanormalProblem>();
+    private NPCManager npcManager;
 
     void Awake()
     {
@@ -26,12 +27,13 @@ public class BullshitMeter : MonoBehaviour
     {
         slider.maxValue = maxProblems;
         slider.value = currentProblems;
+        npcManager = FindFirstObjectByType<NPCManager>();
     }
 
     void Update()
     {
         float target = 0;
-
+        target += npcManager.activeTasks * 25;
         foreach (ParanormalProblem problem in activeProblems)
         {
             target += problem.problemValue;

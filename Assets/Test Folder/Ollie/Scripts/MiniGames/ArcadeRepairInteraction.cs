@@ -1,4 +1,5 @@
 
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -25,10 +26,11 @@ public class ArcadeRepairInteraction : MonoBehaviour
 
     void Update()
     {
+        // Only allow repairing when the player is nearby.
         if (!playerNearby || repairComplete)
             return;
 
-        // Only allow repairs if the arcade is haunted.
+        // Only show the repair UI when the arcade is haunted.
         if (hauntTarget == null || !hauntTarget.IsHaunted)
         {
             repairPanel.SetActive(false);
@@ -37,7 +39,7 @@ public class ArcadeRepairInteraction : MonoBehaviour
 
         repairPanel.SetActive(true);
 
-        // Hold E to fill the repair bar.
+        // Hold E to repair.
         if (Keyboard.current != null &&
             Keyboard.current.eKey.isPressed)
         {
@@ -47,7 +49,7 @@ public class ArcadeRepairInteraction : MonoBehaviour
             repairSlider.value = repairProgress;
         }
 
-        // Repair is complete when the bar reaches 100%.
+        // Finish repairing.
         if (repairProgress >= 1f)
         {
             FinishRepair();
@@ -57,9 +59,7 @@ public class ArcadeRepairInteraction : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
             playerNearby = true;
-        }
     }
 
     void OnTriggerExit(Collider other)
@@ -71,9 +71,23 @@ public class ArcadeRepairInteraction : MonoBehaviour
         }
     }
 
+    public void ResetRepair()
+    {
+        repairComplete = false;
+        repairProgress = 0;
+
+        repairSlider.value = 0;
+        repairPanel.SetActive(false);
+
+        Debug.Log("Arcade can be broken again!");
+    }
+
     void FinishRepair()
     {
         repairComplete = true;
+
+        repairProgress = 1;
+        repairSlider.value = 1;
 
         hauntTarget.SolveHaunting();
 
