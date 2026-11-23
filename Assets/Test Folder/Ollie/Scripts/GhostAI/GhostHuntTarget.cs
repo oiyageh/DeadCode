@@ -10,6 +10,9 @@ public class GhostHauntTarget : MonoBehaviour
     [Header("Light Effect")]
     public HauntedLightFlicker hauntedLight;
 
+    [Header("Arcade Repair")]
+    public ArcadeRepairInteraction arcadeRepair;
+
     public bool IsHaunted { get; private set; }
 
     public void StartHaunting()
@@ -23,6 +26,10 @@ public class GhostHauntTarget : MonoBehaviour
 
         if (hauntedLight != null)
             hauntedLight.StartFlickering();
+
+        // Reset arcade repair whenever the ghost returns.
+        if (arcadeRepair != null)
+            arcadeRepair.ResetRepair();
 
         Debug.Log(gameObject.name + " is being haunted!");
     }

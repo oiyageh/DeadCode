@@ -75,10 +75,11 @@ public class LightRepairMinigame : MonoBehaviour
 
         rotationProgress = 0;
         rotatingBulb = false;
+        draggingNewBulb = false;
 
         currentStep = RepairStep.UnscrewBulb;
 
-        newBulbStartPosition = newBulb.anchoredPosition;
+        newBulb.anchoredPosition = newBulbStartPosition;
 
         if (playerMovement != null)
             playerMovement.enabled = false;

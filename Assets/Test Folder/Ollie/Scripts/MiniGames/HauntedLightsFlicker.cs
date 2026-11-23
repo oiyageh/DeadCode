@@ -3,10 +3,8 @@ using UnityEngine;
 
 public class HauntedLightFlicker : MonoBehaviour
 {
-    [Header("Light Settings")]
     public Light targetLight;
 
-    [Header("Flicker Settings")]
     public float minFlickerTime = 0.1f;
     public float maxFlickerTime = 0.8f;
 
@@ -23,7 +21,6 @@ public class HauntedLightFlicker : MonoBehaviour
 
     void Update()
     {
-        // Do nothing if the ghost isn't haunting the light.
         if (!beingHaunted || repaired || targetLight == null)
             return;
 
@@ -32,37 +29,28 @@ public class HauntedLightFlicker : MonoBehaviour
         if (timer <= 0)
         {
             targetLight.enabled = !targetLight.enabled;
-
-            timer = Random.Range(
-                minFlickerTime,
-                maxFlickerTime
-            );
+            timer = Random.Range(minFlickerTime, maxFlickerTime);
         }
     }
 
-    // Called when the ghost starts haunting the light.
     public void StartFlickering()
     {
-        if (repaired) return;
-
+        // Allow the ghost to haunt the light again.
+        repaired = false;
         beingHaunted = true;
         timer = 0;
 
         Debug.Log("Ghost is messing with the light!");
     }
 
-    // Called when the ghost stops haunting the light.
     public void StopFlickering()
     {
         beingHaunted = false;
 
         if (!repaired && targetLight != null)
             targetLight.enabled = lightOriginalState;
-
-        Debug.Log("Ghost stopped messing with the light.");
     }
 
-    // Called when the player repairs the light.
     public void RepairLight()
     {
         repaired = true;
