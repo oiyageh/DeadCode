@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class MixingStation : MonoBehaviour
 {
-    public List<string> requiredIngredients = new List<string> { "Tomato", "Onion" };
+    public List<string> requiredIngredients = new List<string> { "Vodka", "Soda" };
     public List<string> placedIngredients = new List<string>();
 
     void OnTriggerEnter2D(Collider2D other)
@@ -19,6 +20,7 @@ public class MixingStation : MonoBehaviour
                 ingredient.inCookingStation = true;
                 Debug.Log($"Added {other.name} to cooking station.");
                 CheckRecipe();
+                Destroy(other);
             }
         }
     }
