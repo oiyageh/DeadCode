@@ -11,7 +11,7 @@ public class TempoaryText : MonoBehaviour
     {
         if (textObject != null)
         {
-            textObject.SetActive(false);
+            ShowText();
         }
     }
     public void ShowText()
