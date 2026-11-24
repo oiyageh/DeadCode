@@ -327,6 +327,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 644609832444430780, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
+      propertyPath: heightAboveObject
+      value: -6
+      objectReference: {fileID: 0}
     - target: {fileID: 3135563721900644141, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
       propertyPath: m_Size.x
       value: 20.791403
@@ -877,7 +881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 644609832444430780, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
       propertyPath: heightAboveObject
-      value: -10
+      value: -6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -940,6 +944,10 @@ PrefabInstance:
     - target: {fileID: 294530149064245639, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 644609832444430780, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
+      propertyPath: heightAboveObject
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 3135563721900644141, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
       propertyPath: m_Size.x
@@ -1131,6 +1139,10 @@ PrefabInstance:
     - target: {fileID: 294530149064245639, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 644609832444430780, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
+      propertyPath: heightAboveObject
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 1698081884604578374, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
@@ -1399,6 +1411,10 @@ PrefabInstance:
     - target: {fileID: 294530149064245639, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 644609832444430780, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
+      propertyPath: heightAboveObject
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 1208009559332100316, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1988,6 +2004,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 644609832444430780, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
+      propertyPath: heightAboveObject
+      value: -6
+      objectReference: {fileID: 0}
     - target: {fileID: 3135563721900644141, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
       propertyPath: m_Size.x
       value: 20.791403
@@ -2255,6 +2275,10 @@ PrefabInstance:
     - target: {fileID: 294530149064245639, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 644609832444430780, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
+      propertyPath: heightAboveObject
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 1698081884604578374, guid: 5ada9e185f957364583576e8a2924a4a, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag

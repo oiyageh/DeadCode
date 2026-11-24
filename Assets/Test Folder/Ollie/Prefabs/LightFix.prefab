@@ -68,6 +68,7 @@ MonoBehaviour:
   problem: {fileID: 644609832444430780}
   hauntPoint: {fileID: 3563061559629623690}
   hauntedLight: {fileID: 1165289580974503237}
+  arcadeRepair: {fileID: 0}
 --- !u!114 &644609832444430780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ParanormalProblem
   problemValue: 10
   indicator: {fileID: 1896920339506969985}
-  heightAboveObject: 12
+  heightAboveObject: -6
 --- !u!1 &3000972878536020145
 GameObject:
   m_ObjectHideFlags: 0
