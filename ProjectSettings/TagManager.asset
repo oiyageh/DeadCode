@@ -10,6 +10,7 @@ TagManager:
   - NPC
   - Brick
   - Wall
+  - Ingredient
   layers:
   - Default
   - TransparentFX
