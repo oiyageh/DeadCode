@@ -1,185 +1,146 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class GhostAI : MonoBehaviour
 {
-    [Header("Movement")]
+    [Header("Ghost Settings")]
     public NavMeshAgent agent;
-    public float wanderRadius = 15f;
-    public float waitTime = 5f;
+    public float hauntDuration = 10f;
+    public float wanderRadius = 10f;
 
-    [Header("Ghost Model")]
-    public Transform ghostModel;
-
-    [Header("Floating")]
-    public float floatHeight = 0.3f;
-    public float floatSpeed = 2f;
-
-    [Header("Haunting")]
-    public GhostHauntTarget[] hauntTargets;
-    public float hauntDuration = 5f;
-    public float hauntDistance = 2f;
-
-    private Vector3 startPosition;
-    private float timer;
+    [Header("Haunting Targets")]
+    public GhostHauntTarget[] targets;
 
     private GhostHauntTarget currentTarget;
-    private bool isHaunting = false;
+
+    private enum GhostState
+    {
+        ChoosingTarget,
+        MovingToTarget,
+        Haunting,
+        MovingAway
+    }
+
+    private GhostState currentState;
+
+    private float hauntTimer;
 
     void Start()
     {
         if (agent == null)
             agent = GetComponent<NavMeshAgent>();
 
-        if (agent == null || !agent.enabled)
+        if (agent == null)
         {
             Debug.LogError("Ghost needs a NavMeshAgent!");
             enabled = false;
             return;
         }
 
-        if (ghostModel != null)
-            startPosition = ghostModel.localPosition;
-
-        NavMeshHit hit;
-
-        if (NavMesh.SamplePosition(
-            transform.position, out hit, 5f, NavMesh.AllAreas))
-        {
-            agent.Warp(hit.position);
-        }
-        else
-        {
-            Debug.LogError("Ghost could not find a NavMesh!");
-            enabled = false;
-            return;
-        }
-
-        PickRandomPosition();
+        currentState = GhostState.ChoosingTarget;
     }
 
     void Update()
     {
-        if (agent == null || !agent.enabled || !agent.isOnNavMesh)
-            return;
-
-        FloatGhost();
-
-        // If currently haunting an object
-        if (isHaunting)
+        switch (currentState)
         {
-            timer += Time.deltaTime;
+            case GhostState.ChoosingTarget:
+                ChooseRandomTarget();
+                break;
 
-            if (timer >= hauntDuration)
-            {
-                isHaunting = false;
-                currentTarget = null;
+            case GhostState.MovingToTarget:
+                CheckTargetArrival();
+                break;
 
-                PickNextTarget();
-            }
+            case GhostState.Haunting:
+                HauntTarget();
+                break;
 
-            return;
-        }
-
-        // If moving toward a haunting target
-        if (currentTarget != null)
-        {
-            if (!agent.pathPending &&
-                agent.remainingDistance <= hauntDistance)
-            {
-                StartHaunting();
-            }
-
-            return;
-        }
-
-        // If wandering, choose a new target after waiting
-        timer += Time.deltaTime;
-
-        if (!agent.pathPending &&
-            agent.remainingDistance <= 1f &&
-            timer >= waitTime)
-        {
-            PickNextTarget();
+            case GhostState.MovingAway:
+                CheckWanderArrival();
+                break;
         }
     }
 
-    void FloatGhost()
+    void ChooseRandomTarget()
     {
-        if (ghostModel == null) return;
+        List<GhostHauntTarget> availableTargets =
+            new List<GhostHauntTarget>();
 
-        float newY = Mathf.Sin(Time.time * floatSpeed)
-                     * floatHeight;
-
-        ghostModel.localPosition = new Vector3(
-            startPosition.x,
-            startPosition.y + newY,
-            startPosition.z
-        );
-    }
-
-    void PickNextTarget()
-    {
-        timer = 0;
-
-        // Collect available targets
-        System.Collections.Generic.List<GhostHauntTarget> available =
-            new System.Collections.Generic.List<GhostHauntTarget>();
-
-        foreach (GhostHauntTarget target in hauntTargets)
+        // Find targets that have not been haunted yet.
+        foreach (GhostHauntTarget target in targets)
         {
             if (target != null && !target.IsHaunted)
             {
-                available.Add(target);
+                availableTargets.Add(target);
             }
         }
 
-        // Choose a random object to haunt
-        if (available.Count > 0)
+        // Wait if every target already has a problem.
+        if (availableTargets.Count == 0)
+            return;
+
+        // Pick a random target.
+        int randomIndex = Random.Range(0, availableTargets.Count);
+
+        currentTarget = availableTargets[randomIndex];
+
+        // Move toward the target.
+        Vector3 destination = currentTarget.transform.position;
+
+        if (currentTarget.hauntPoint != null)
+            destination = currentTarget.hauntPoint.position;
+
+        agent.isStopped = false;
+        agent.SetDestination(destination);
+
+        currentState = GhostState.MovingToTarget;
+
+        Debug.Log("Ghost chose: " + currentTarget.gameObject.name);
+    }
+
+    void CheckTargetArrival()
+    {
+        if (currentTarget == null)
         {
-            int randomIndex = Random.Range(0, available.Count);
+            currentState = GhostState.ChoosingTarget;
+            return;
+        }
 
-            currentTarget = available[randomIndex];
-
-            Transform destination = currentTarget.hauntPoint != null
-                ? currentTarget.hauntPoint
-                : currentTarget.transform;
-
-            NavMeshHit hit;
-
-            if (NavMesh.SamplePosition(
-                destination.position, out hit, 3f, NavMesh.AllAreas))
+        if (!agent.pathPending &&
+            agent.remainingDistance <= agent.stoppingDistance + 0.2f)
+        {
+            // Check that another event hasn't haunted this target already.
+            if (!currentTarget.IsHaunted)
             {
-                agent.SetDestination(hit.position);
+                currentTarget.StartHaunting();
+
+                hauntTimer = hauntDuration;
+                currentState = GhostState.Haunting;
             }
             else
             {
                 currentTarget = null;
-                PickRandomPosition();
+                currentState = GhostState.ChoosingTarget;
             }
         }
-        else
+    }
+
+    void HauntTarget()
+    {
+        hauntTimer -= Time.deltaTime;
+
+        // Leave after the haunting time ends.
+        if (hauntTimer <= 0)
         {
-            // No available objects, continue wandering
             currentTarget = null;
-            PickRandomPosition();
+            MoveAway();
         }
     }
 
-    void StartHaunting()
-    {
-        if (currentTarget == null) return;
-
-        agent.ResetPath();
-
-        currentTarget.StartHaunting();
-
-        isHaunting = true;
-        timer = 0;
-    }
-
-    void PickRandomPosition()
+    void MoveAway()
     {
         Vector3 randomDirection =
             Random.insideUnitSphere * wanderRadius;
@@ -189,11 +150,28 @@ public class GhostAI : MonoBehaviour
         NavMeshHit hit;
 
         if (NavMesh.SamplePosition(
-            randomDirection, out hit, wanderRadius, NavMesh.AllAreas))
+            randomDirection,
+            out hit,
+            wanderRadius,
+            NavMesh.AllAreas))
         {
+            agent.isStopped = false;
             agent.SetDestination(hit.position);
-        }
 
-        timer = 0;
+            currentState = GhostState.MovingAway;
+        }
+        else
+        {
+            currentState = GhostState.ChoosingTarget;
+        }
+    }
+
+    void CheckWanderArrival()
+    {
+        if (!agent.pathPending &&
+            agent.remainingDistance <= agent.stoppingDistance + 0.2f)
+        {
+            currentState = GhostState.ChoosingTarget;
+        }
     }
 }

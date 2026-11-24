@@ -6,6 +6,7 @@ public class NPCManager : MonoBehaviour
 {
     public GameObject currentNPC;
     public Interactable Penny;
+    public GameObject penny;
     public Interactable Rosaline;
     public Interactable Alcoholic;
     public Interactable Russell;
@@ -53,7 +54,8 @@ void ShowTask(string message)
         dialogueRunner = FindFirstObjectByType<DialogueRunner>();
 
         Penny.ActiveTask = true;
-        Invoke("RosalineTask", 30f);
+        Invoke("RosalineTask", 35f);
+
     }
 
     void RosalineTask()
