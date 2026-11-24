@@ -194,6 +194,7 @@ You: Sorry, Penny. I'm working.
 You: Maybe another time.
 Penny: Aw... okay.
 Penny: Well, thanks anyway!
+<<penny_complete NPCManager>>
 <<completed_task NPCManager>>
 <<deactivate_npc NPCManager>>
 

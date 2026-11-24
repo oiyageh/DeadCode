@@ -11,6 +11,7 @@ public class NPCManager : MonoBehaviour
     public Interactable Alcoholic;
     public Interactable Russell;
     public int activeTasks = 0;
+    public bool pennyComplete = false;
 
     private DialogueRunner dialogueRunner;
 
@@ -42,6 +43,13 @@ public class NPCManager : MonoBehaviour
     taskNotif.text = "";
     }
 
+    [YarnCommand("penny_complete")]
+    public void CompletePenny()
+    {
+        pennyComplete = true;
+        Debug.Log("penny has been spoken to");
+    }
+
 void ShowTask(string message)
 {
     taskNotif.text = message;
@@ -54,7 +62,11 @@ void ShowTask(string message)
         dialogueRunner = FindFirstObjectByType<DialogueRunner>();
 
         Penny.ActiveTask = true;
+
+        if (pennyComplete = true)
+        {
         Invoke("RosalineTask", 35f);
+        }
 
     }
 
