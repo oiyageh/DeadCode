@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 223335124}
   - component: {fileID: 223335123}
   - component: {fileID: 223335127}
-  - component: {fileID: 223335125}
   - component: {fileID: 223335126}
   - component: {fileID: 223335128}
   m_Layer: 5
@@ -150,14 +149,14 @@ RectTransform:
   m_GameObject: {fileID: 223335120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4343, y: 0.4343, z: 0.4343}
+  m_LocalScale: {x: 1.0515705, y: 1.0515705, z: 1.0515705}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1642192308}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -165.8, y: 0}
+  m_AnchoredPosition: {x: -165.79, y: -0.603}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &223335123
@@ -172,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 2e79262cc559aad4ebe779d3b0798169, type: 2}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -198,26 +197,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223335120}
   m_CullTransparentMesh: 1
---- !u!114 &223335125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223335120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff2f3d82b480e94f97635b5d5bdede8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Moveable
-  isMovable: 1
-  onClickEvents:
-    onMouseDown:
-      m_PersistentCalls:
-        m_Calls: []
-    onMouseRelease:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!61 &223335126
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -276,8 +255,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9364f0083c6e74e49af71aa58c3f14c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
+  isMovable: 1
   inCookingStation: 0
-  MixingStation: {fileID: 0}
+  onClickEvents:
+    onMouseDown:
+      m_PersistentCalls:
+        m_Calls: []
+    onMouseRelease:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!50 &223335128
 Rigidbody2D:
   serializedVersion: 5
@@ -396,7 +382,6 @@ GameObject:
   - component: {fileID: 1104004036}
   - component: {fileID: 1104004035}
   - component: {fileID: 1104004034}
-  - component: {fileID: 1104004033}
   - component: {fileID: 1104004032}
   - component: {fileID: 1104004031}
   m_Layer: 5
@@ -415,14 +400,14 @@ RectTransform:
   m_GameObject: {fileID: 1104004029}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4343, y: 0.4343, z: 0.4343}
+  m_LocalScale: {x: 0.4343, y: 1.003233, z: 0.4343}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1642192308}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 147, y: 0}
+  m_AnchoredPosition: {x: 147, y: -0.55579}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!50 &1104004031
@@ -498,26 +483,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 99.85308, y: 99.27028}
   m_EdgeRadius: 0
---- !u!114 &1104004033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104004029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff2f3d82b480e94f97635b5d5bdede8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Moveable
-  isMovable: 1
-  onClickEvents:
-    onMouseDown:
-      m_PersistentCalls:
-        m_Calls: []
-    onMouseRelease:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!114 &1104004034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,8 +495,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9364f0083c6e74e49af71aa58c3f14c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
+  isMovable: 1
   inCookingStation: 0
-  MixingStation: {fileID: 0}
+  onClickEvents:
+    onMouseDown:
+      m_PersistentCalls:
+        m_Calls: []
+    onMouseRelease:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &1104004035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 7d73f55105602ca4eb661ab14490b81d, type: 2}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -953,7 +925,7 @@ GameObject:
   - component: {fileID: 1779679588}
   - component: {fileID: 1779679591}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -975,8 +947,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: 22.7}
+  m_SizeDelta: {x: 100, y: 186.6807}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1779679588
 MonoBehaviour:
@@ -991,8 +963,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MixingStation
   requiredIngredients:
-  - Tomato
-  - Onion
+  - Vodka
+  - Soda
   placedIngredients: []
 --- !u!114 &1779679589
 MonoBehaviour:
@@ -1006,7 +978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 491542f73309a064497cbffff1141f46, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1066,7 +1038,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.438797, y: 0.9212074}
+  m_Offset: {x: 0.438797, y: -0.48443604}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1076,7 +1048,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 100.86478, y: 99.0055}
+  m_Size: {x: 100.86478, y: 188.96597}
   m_EdgeRadius: 0
 --- !u!1 &1907471451
 GameObject:
@@ -1107,8 +1079,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9364f0083c6e74e49af71aa58c3f14c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
+  isMovable: 1
   inCookingStation: 0
-  MixingStation: {fileID: 0}
+  onClickEvents:
+    onMouseDown:
+      m_PersistentCalls:
+        m_Calls: []
+    onMouseRelease:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!4 &1907471453
 Transform:
   m_ObjectHideFlags: 0

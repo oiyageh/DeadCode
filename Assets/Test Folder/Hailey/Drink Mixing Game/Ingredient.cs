@@ -1,47 +1,54 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
+using UnityEngine.UI;
+public class Ingredient : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 
-public class Ingredient : MonoBehaviour
 {
+   
     private bool isDragging = false;
-    private Vector3 offset;
-    private Vector3 initialPosition;
-    private Transform initialParent;
+    public bool isMovable = true;
+    private Vector2 offset;
+    public bool inCookingStation;
 
-    public bool inCookingStation = false;
-
-    public Transform MixingStation;
-
-    void Start()
+    [System.Serializable]
+    public struct OnClickEvents
     {
-        initialPosition = transform.position;
-        initialParent = transform.parent;
+        public UnityEvent onMouseDown;
+        public UnityEvent onMouseRelease;
+    }
+    [Header("Events")]
+    public OnClickEvents onClickEvents;
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (!isMovable) return;
+        transform.position = eventData.position - offset;
     }
 
-
-    public void OnMouseUp()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        isDragging = false;
-        // Check if dropped on a valid cooking station
-        if (inCookingStation)
+        if (!isMovable) return;
+        offset = eventData.position - new Vector2(transform.position.x, transform.position.y);
+        isDragging = true;
+        transform.SetAsLastSibling();
+        onClickEvents.onMouseDown?.Invoke();
+        if (gameObject.GetComponent<Image>() != null)
         {
-            transform.SetParent(MixingStation);
-            Debug.Log("Ingredient placed on cooking station!");
-        }
-        else
-        {
-            // Snap back to original position if dropped incorrectly
-            transform.position = initialPosition;
-            transform.SetParent(initialParent);
+            gameObject.GetComponent<Image>().raycastTarget = false;
         }
     }
 
-    void Update()
+    public void OnPointerUp(PointerEventData eventData)
     {
         if (isDragging)
         {
-            Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
-            newPosition.z = transform.position.z; // Keep the same z position
-            transform.position = newPosition;
+            if (!isMovable) return;
+            isDragging = false;
+            onClickEvents.onMouseRelease?.Invoke();
+
+            gameObject.GetComponent<Image>().raycastTarget = true;
+            if (inCookingStation) Destroy(gameObject);
         }
     }
 }
+
