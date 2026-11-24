@@ -20,7 +20,6 @@ public class MixingStation : MonoBehaviour
                 ingredient.inCookingStation = true;
                 Debug.Log($"Added {other.name} to cooking station.");
                 CheckRecipe();
-                Destroy(other);
             }
         }
     }
